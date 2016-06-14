@@ -51,10 +51,14 @@
 (show-paren-mode t)
 
 ;;; ツールバーを消す
-(tool-bar-mode -1)
+(when (or run-win run-xemacs)
+  (tool-bar-mode -1)
+  )
 
 ;;; スクロールバーを消す
-(scroll-bar-mode -1)
+(when (or run-win run-xemacs)
+  (scroll-bar-mode -1)
+  )
 
 ;;; ダイアログボックスを使わないようにする
 (setq use-dialog-box nil)
