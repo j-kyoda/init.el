@@ -156,6 +156,13 @@
              (setq indent-tabs-mode nil)
              ))
 
+;;; shell-script-mode
+(add-hook 'sh-mode-hook
+          '(lambda ()
+             ;; インデントの変更
+             (setq indent-tabs-mode nil)
+             ))
+
 ;;; shell-mode
 (add-hook 'shell-mode-hook
           '(lambda ()
