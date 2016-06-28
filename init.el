@@ -10,12 +10,6 @@
 ; Initialize
 (package-initialize)
 
-; atom
-(unless (package-installed-p 'atom-dark-theme)
-  (package-refresh-contents) (package-install 'atom-dark-theme))
-(load-theme 'atom-dark t)
-
-
 ;;;
 ;;; 環境取得
 ;;;
@@ -162,6 +156,27 @@
              ;; インデントの変更
              (setq indent-tabs-mode nil)
              ))
+
+;;; python
+(unless (package-installed-p 'python-mode)
+  (package-refresh-contents) (package-install 'python-mode))
+(when (featurep 'python) (unload-feature 'python t))
+(autoload 'python-mode "python-mode" "Python editing mode." t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes nil)
+ '(py-indent-offset 4))
+(add-hook 'python-mode-hook
+  '(lambda()
+    (setq tab-width 4)
+    (setq indent-tabs-mode nil)
+  )
+)
 
 ;;; shell-mode
 (add-hook 'shell-mode-hook
