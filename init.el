@@ -132,6 +132,9 @@
 ;;; モード設定
 ;;;
 
+;;; No tab globally
+(setq-default indent-tabs-mode nil)
+
 ;;; c/c++
 (add-hook 'c-mode-common-hook
           '(lambda ()
@@ -185,6 +188,11 @@
              (setq indent-tabs-mode nil)
              ))
 
+;;; js2-mode
+(unless (package-installed-p 'js2-mode)
+  (package-refresh-contents) (package-install 'js2-mode))
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; フレームサイズ最大化・通常化
