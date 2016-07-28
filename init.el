@@ -10,6 +10,11 @@
 ; Initialize
 (package-initialize)
 
+; theme
+(unless (package-installed-p 'atom-dark-theme)
+  (package-refresh-contents) (package-install 'atom-dark-theme))
+(load-theme 'atom-dark t)
+
 ;;;
 ;;; 環境取得
 ;;;
@@ -167,13 +172,6 @@
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes nil)
- '(py-indent-offset 4))
 (add-hook 'python-mode-hook
   '(lambda()
     (setq tab-width 4)
@@ -423,4 +421,3 @@
 
 ;;;
 ;;; end of file
-
