@@ -367,6 +367,34 @@
                  (when (file-exists-p tempfile)
                    (delete-file tempfile))))))))
 
+  ;;; 関連付けられたソフトで開く
+  (defun my-unix-to-dos-filename (s)
+    (encode-coding-string
+     (concat (mapcar #'(lambda (x) (if(= x ?/) ?\\ x)) (string-to-list s)))
+    'sjis))
+
+  (defun my-x-open ()
+    "open file."
+    (interactive)
+    (let ((file (dired-get-filename)))
+      (message "Opening %s..." file)
+      (cond ((not window-system)
+             (find-file file))
+            ((eq system-type 'windows-nt)
+             (call-process "cmd.exe" nil 0 nil "/c" "start" ""
+                           (my-unix-to-dos-filename file)))
+            ((eq system-type 'darwin)
+             (call-process "open" nil 0 nil file))
+            (t
+             (call-process "xdg-open" nil 0 nil file)))
+      (recentf-add-file file)
+      (message "Opening %s...done" file))
+    )
+    (add-hook 'dired-mode-hook
+              (lambda ()
+                (defvar dired-mode-map "")
+                (define-key dired-mode-map "z" 'my-x-open)))
+
   ) ;; when win
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
