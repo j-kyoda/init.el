@@ -83,6 +83,21 @@
 (set-face-foreground 'whitespace-tab "cyan")
 (set-face-background 'whitespace-tab 'nil)
 
+;;; フォントをRictyDiminishedに設定
+(when (or run-win run-xemacs)
+  (let* ((size 15)
+         (asciifont "Ricty Diminished")
+         (jpfont "Ricty  Diminished")
+         (h (* size 10))
+         (fontspec (font-spec :family asciifont))
+         (jp-fontspec (font-spec :family jpfont)))
+    (set-face-attribute 'default nil :family asciifont :height h)
+    (set-fontset-font nil 'japanese-jisx0213.2004-1 jp-fontspec)
+    (set-fontset-font nil 'japanese-jisx0213-2 jp-fontspec)
+    (set-fontset-font nil 'katakana-jisx0201 jp-fontspec)
+    (set-fontset-font nil '(#x0080 . #x024F) fontspec)
+    (set-fontset-font nil '(#x0370 . #x03FF) fontspec))
+  )
 
 ;;;
 ;;; 記録関連
