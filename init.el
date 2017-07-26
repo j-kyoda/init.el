@@ -26,10 +26,8 @@
   (and (null run-unix)
        (or (equal system-type 'windows-nt)
            (equal system-type 'ms-dos))))
-(defvar run-emacs24
-  (and (equal emacs-major-version 24)
-       (null (featurep 'xemacs))))
-(defvar run-xemacs (featurep 'xemacs))
+(defvar run-xemacs
+  (equal window-system 'x))
 
 
 ;;;
