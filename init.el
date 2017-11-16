@@ -455,8 +455,8 @@
 
 
 ;;; 行番号付ける
-;;(autoload 'setnu-mode "setnu" nil t)
-;;(global-set-key [f11] 'setnu-mode)
+(require 'linum)
+(global-set-key [f11] 'linum-mode)
 
 
 ;;;
