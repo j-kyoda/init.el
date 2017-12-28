@@ -407,6 +407,15 @@
                 (defvar dired-mode-map "")
                 (define-key dired-mode-map "z" 'my-x-open)))
 
+  ;;; エクスプローラーでディレクトリを開く
+  (defun explorer()
+    "open directory with explorer."
+    (interactive)
+    (shell-command "explorer ."))
+  (add-hook 'dired-mode-hook
+            (lambda ()
+              (defvar dired-mode-map "")
+              (define-key dired-mode-map "e" 'explorer)))
   ) ;; when win
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
