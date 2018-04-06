@@ -163,11 +163,18 @@
              (setq tab-width 4)
              ))
 
-;;; html-mode
-(add-hook 'html-mode-hook
+;;; web-mode
+(unless (package-installed-p 'web-mode)
+  (package-refresh-contents) (package-install 'web-mode))
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?$"     . web-mode))
+(add-hook 'web-mode-hook
           '(lambda ()
              ;; インデントの変更
-             (setq indent-tabs-mode nil)
+             (setq web-mode-html-offset   2)
+             (setq web-mode-css-offset    2)
+             (setq web-mode-script-offset 2)
+             (setq web-mode-php-offset    2)
              ))
 
 ;;; shell-script-mode
