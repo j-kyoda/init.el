@@ -171,10 +171,12 @@
 (add-hook 'web-mode-hook
           '(lambda ()
              ;; インデントの変更
-             (setq web-mode-html-offset   2)
-             (setq web-mode-css-offset    2)
-             (setq web-mode-script-offset 2)
-             (setq web-mode-php-offset    2)
+             (setq web-mode-attr-indent-offset nil)
+             (setq web-mode-markup-indent-offset 2)
+             (setq web-mode-css-indent-offset 2)
+             (setq web-mode-code-indent-offset 2)
+             (setq indent-tabs-mode nil)
+             (setq tab-with 2)
              ))
 
 ;;; shell-script-mode
