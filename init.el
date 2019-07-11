@@ -289,7 +289,7 @@
   ;; migemo-dictのパスを指定
   (setq migemo-command "cmigemo")
   (setq migemo-options '("-q" "--emacs"))
-  (setq migemo-directory "c:/tools/cmigemo-default-win64/dict/utf-8")
+  (setq migemo-directory "c:/tool/cmigemo-default-win64/dict/utf-8")
   (setq migemo-user-dictionary nil)
   (setq migemo-regex-dictionary nil)
   ;; キャッシュ機能を利用する
