@@ -473,8 +473,7 @@
 
 
 ;;; 行番号付ける
-(require 'linum)
-(global-set-key [f11] 'linum-mode)
+(global-set-key [f11] 'display-line-numbers-mode)
 
 
 ;;;
