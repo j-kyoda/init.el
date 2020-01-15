@@ -163,6 +163,12 @@
              (setq tab-width 4)
              ))
 
+;;; vue-mode
+(unless (package-installed-p 'vue-mode)
+  (package-refresh-contents) (package-install 'vue-mode))
+(setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+(setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+
 ;;; web-mode
 (unless (package-installed-p 'web-mode)
   (package-refresh-contents) (package-install 'web-mode))
