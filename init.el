@@ -293,7 +293,7 @@
   (unless (package-installed-p 'migemo)
     (package-refresh-contents) (package-install 'migemo))
   ;; migemo-dictのパスを指定
-  (setq migemo-command "cmigemo")
+  (setq migemo-command "c:/tool/cmigemo-default-win64/cmigemo")
   (setq migemo-options '("-q" "--emacs"))
   (setq migemo-directory "c:/tool/cmigemo-default-win64/dict/utf-8")
   (setq migemo-user-dictionary nil)
