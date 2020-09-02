@@ -101,7 +101,7 @@
 ;;;
 
 ;;; ファイル内のカーソル位置を記憶する
-(setq-default save-place t)
+(setq-default save-place-mode t)
 (require 'saveplace)
 
 ;;; ログの記録行数を増やす
