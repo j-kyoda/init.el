@@ -266,7 +266,7 @@
 
 (when run-win
   ;;; shell の設定
-  ;;; Cygwin の bash を使う場合
+  ;;; msys2 の bash を使う場合
   (defvar explicit-shell-file-name "")
   (setq explicit-shell-file-name "bash")
   (setq shell-file-name "sh")
@@ -281,10 +281,6 @@
   (add-hook 'shell-mode-hook
             (lambda ()
               (set-buffer-process-coding-system 'utf-8-dos 'utf-8-unix)))
-
-  ;;; grepの設定(cygwin lv)
-  (setq grep-command "lgrep -n -Ou8 ")
-  (setq grep-program "lgrep")
 
   ;;; grep-findの設定
   (setq null-device "/dev/null")
