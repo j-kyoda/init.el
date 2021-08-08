@@ -163,6 +163,11 @@
              (setq tab-width 4)
              ))
 
+;;; rust-mode
+(unless (package-installed-p 'rust-mode)
+  (package-refresh-contents) (package-install 'rust-mode))
+(require 'rust-mode)
+
 ;;; vue-mode
 (unless (package-installed-p 'vue-mode)
   (package-refresh-contents) (package-install 'vue-mode))
