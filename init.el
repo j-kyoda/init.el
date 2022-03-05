@@ -218,6 +218,12 @@
              (setq indent-tabs-mode nil)
              ))
 
+;;; js-mode
+(add-hook 'js-mode-hook
+          '(lambda()
+             (setq js-indent-level 2)
+             ))
+
 ;;; js2-mode
 (unless (package-installed-p 'js2-mode)
   (package-refresh-contents) (package-install 'js2-mode))
