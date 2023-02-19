@@ -80,11 +80,11 @@
 (set-face-foreground 'whitespace-tab "cyan")
 (set-face-background 'whitespace-tab 'nil)
 
-;;; フォントをRictyDiminishedに設定
+;;; フォントをHackGenに設定
 (when (or run-win run-xemacs)
   (let* ((size 15)
-         (asciifont "Ricty Diminished")
-         (jpfont "Ricty  Diminished")
+         (asciifont "HackGen Console NF")
+         (jpfont "HackGen Console NF")
          (h (* size 10))
          (fontspec (font-spec :family asciifont))
          (jp-fontspec (font-spec :family jpfont)))
@@ -369,7 +369,6 @@
   ;;     M-x ps-print-region-with-face リージョンをカラー印刷
   ;; ---------------------------------------------
 
-  (require 'cl)
   (defun listsubdir (basedir)
     (remove-if (lambda (x) (not (file-directory-p x)))
                (directory-files basedir t "^[^.]")))
