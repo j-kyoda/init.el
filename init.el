@@ -83,8 +83,8 @@
 ;;; フォントをHackGenに設定
 (when (or run-win run-xemacs)
   (let* ((size 15)
-         (asciifont "HackGen Console NF")
-         (jpfont "HackGen Console NF")
+         (asciifont "HackGen")
+         (jpfont "HackGen")
          (h (* size 10))
          (fontspec (font-spec :family asciifont))
          (jp-fontspec (font-spec :family jpfont)))
