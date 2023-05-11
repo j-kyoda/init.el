@@ -224,18 +224,6 @@
              (setq js-indent-level 2)
              ))
 
-;;; js2-mode
-(unless (package-installed-p 'js2-mode)
-  (package-refresh-contents) (package-install 'js2-mode))
-(require 'js2-mode)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-hook 'js2-mode-hook
-          '(lambda()
-             (setq js2-basic-offset 2)
-             (setq js2-strict-missing-semi-warning nil)
-             )
-          )
-
 ;;; css-mode
 (add-hook 'css-mode-hook
           '(lambda ()
