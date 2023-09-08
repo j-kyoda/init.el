@@ -26,7 +26,8 @@
        (or (equal system-type 'windows-nt)
            (equal system-type 'ms-dos))))
 (defvar run-xemacs
-  (equal window-system 'x))
+  (or (equal window-system 'x)
+      (equal window-system 'w32)))
 
 
 ;;;
@@ -47,12 +48,12 @@
 (show-paren-mode t)
 
 ;;; ツールバーを消す
-(when (or run-win run-xemacs)
+(when run-xemacs
   (tool-bar-mode -1)
   )
 
 ;;; スクロールバーを消す
-(when (or run-win run-xemacs)
+(when run-xemacs
   (scroll-bar-mode -1)
   )
 
@@ -81,8 +82,8 @@
 (set-face-background 'whitespace-tab 'nil)
 
 ;;; フォントをHackGenに設定
-(when (or run-win run-xemacs)
-  (let* ((size 15)
+(when run-xemacs
+  (let* ((size 14)
          (asciifont "HackGen")
          (jpfont "HackGen")
          (h (* size 10))
@@ -283,7 +284,7 @@
 ;;; Windowsの設定
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(when run-win
+(when (and run-win run-xemacs)
   ;; MSYS2 のコマンドを使えるようにする.
   (setenv "PATH"
     (concat
