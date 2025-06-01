@@ -207,18 +207,28 @@
              ))
 
 ;;; python
-(unless (package-installed-p 'python-mode)
-  (package-refresh-contents) (package-install 'python-mode))
-(when (featurep 'python) (unload-feature 'python t))
-(autoload 'python-mode "python-mode" "Python editing mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-;(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-(add-hook 'python-mode-hook
-  '(lambda()
-    (setq tab-width 4)
-    (setq indent-tabs-mode nil)
-  )
-)
+;; (unless (package-installed-p 'python-mode)
+;;   (package-refresh-contents) (package-install 'python-mode))
+;; (when (featurep 'python) (unload-feature 'python t))
+;; (autoload 'python-mode "python-mode" "Python editing mode." t)
+;; (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+;; ;(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+;; (add-hook 'python-mode-hook
+;;   '(lambda()
+;;     (setq tab-width 4)
+;;     (setq indent-tabs-mode nil)
+;;   )
+;; )
+(use-package python
+  :ensure t
+  :hook (python-mode .  eglot-ensure)
+  :custom
+  (python-shell-interpreter "python"))
+
+;; company-mode を使う（eglotと併用OK）
+(use-package company
+  :ensure t
+  :hook (after-init . global-company-mode))
 
 ;;; yaml-mode
 (unless (package-installed-p 'yaml-mode)
