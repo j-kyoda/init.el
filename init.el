@@ -9,6 +9,14 @@
 ; Initialize
 (package-initialize)
 
+;; use-package のインストール
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
+(setq use-package-always-ensure t)
+
 ; theme
 (unless (package-installed-p 'atom-dark-theme)
   (package-refresh-contents) (package-install 'atom-dark-theme))
